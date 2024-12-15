@@ -1,3 +1,3 @@
 const connections = new Map();
 
-module.exports = connections;
+export default connections;

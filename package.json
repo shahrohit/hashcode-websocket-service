@@ -1,15 +1,38 @@
 {
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "socket.io": "^4.8.1"
-  },
   "name": "websocket-service",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.8.3",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "@typescript-eslint/parser": "^8.12.2",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "tsc-alias": "^1.8.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
   "scripts": {
-    "dev": "npx nodemon index.js"
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
+    "format:check": "prettier --check 'src/**/*.{ts,tsx,json,md}'",
+    "type-check": "tsc",
+    "build": "rimraf dist && tsc --noEmit false && tsc-alias",
+    "start": "node dist/server.js",
+    "dev": "npx nodemon -r tsconfig-paths/register src/server.ts"
   },
   "keywords": [],
   "author": "",
