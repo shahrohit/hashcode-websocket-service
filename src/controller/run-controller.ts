@@ -5,11 +5,11 @@ import { RUN } from "@/utils/events";
 const runContoller = (req: Req, res: Res) => {
   try {
     const body = req.body;
-    const key = body.id;
-    const socketId = connections.get(key);
+    const socketKey = body.socketKey;
+    const socketId = connections.get(socketKey);
 
     if (socketId && req.io) {
-      req.io.to(socketId).emit(RUN, body); // Access io from req
+      req.io.to(socketId).emit(RUN, body);
       res.status(200).json({ message: "Result emitted successfully to user" });
       return;
     }

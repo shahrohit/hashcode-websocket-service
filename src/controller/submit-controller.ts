@@ -5,8 +5,9 @@ import { Request, Response } from "express";
 const submitContoller = (req: Request, res: Response) => {
   try {
     const body = req.body;
-    const key = body.id;
-    const socketId = connections.get(key);
+    console.log(body);
+    const socketKey = body.socketKey;
+    const socketId = connections.get(socketKey);
     if (socketId && req.io) {
       req.io.to(socketId).emit(SUBMIT, body); // Access io from req
       res.status(200).json({ message: "Result emitted successfully to user" });
