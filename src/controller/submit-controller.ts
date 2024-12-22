@@ -5,7 +5,6 @@ import { Request, Response } from "express";
 const submitContoller = (req: Request, res: Response) => {
   try {
     const body = req.body;
-    console.log(body);
     const socketKey = body.socketKey;
     const socketId = connections.get(socketKey);
     if (socketId && req.io) {

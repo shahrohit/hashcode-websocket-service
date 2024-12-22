@@ -1,7 +1,7 @@
 import connections from "@/config/map";
 import { Socket } from "socket.io";
 
-export const registerWS = (socket: Socket, id: any) => {
+export const registerWS = (socket: Socket, id: unknown) => {
   if (typeof id === "string") {
     connections.set(id, socket.id);
   }
